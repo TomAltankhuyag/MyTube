@@ -8,7 +8,7 @@
                  clearable
                  hide-details="auto").input-style
     .controller-buttons
-      v-btn.add-style(@click="onLoadPlaylist").btn-style Play now
+      v-btn.add-style(@click="processAction(controllerOptions.PLAY_NOW)").btn-style Play now
       v-btn.add-style(@click="onLoadPlaylist").btn-style Load Playlist
       v-btn.add-style(@click="processAction(controllerOptions.QUEUE)").btn-style Queue Song
   v-switch(v-model="autopause"
