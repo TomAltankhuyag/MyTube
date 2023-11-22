@@ -9,11 +9,11 @@ export default {
       playlist,
       setting
     }
-    // Storing session storage for playlist
+
     store.playlist.$subscribe((mutation, state) => {
       const currentPlaylist = state.currentPlaylist
       if (currentPlaylist.length !== 0) {
-        sessionStorage.setItem('currentPlaylist', JSON.stringify(currentPlaylist))
+        localStorage.setItem('currentPlaylist', JSON.stringify(currentPlaylist))
       }
      })
     // Global store property

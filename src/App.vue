@@ -35,7 +35,7 @@ export default {
     ...mapState(usePlaylistStore, ['currentVideo']),
   },
   mounted() {
-    const currentPlaylist = JSON.parse(sessionStorage.getItem('currentPlaylist'))
+    const currentPlaylist = JSON.parse(localStorage.getItem('currentPlaylist'))
     if (currentPlaylist) {
       this.$store.playlist.setCurrentPlaylist(currentPlaylist)
     }
