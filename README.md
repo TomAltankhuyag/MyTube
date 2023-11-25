@@ -21,8 +21,9 @@ Finally, the app can be ran by:
 npm run app
 ```
 By default you should be able to see a JJK video.
+
 If you run into node-sass problems, try clearing your npm cache:
 ```
 npm cache clean --force
 ```
-Then `npm install`, `npm rebuild node-sass` and run the app `npm run app`.
+Then run `npm install`, `npm rebuild node-sass` and run the app `npm run app`.
