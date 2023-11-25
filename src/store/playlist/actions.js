@@ -65,13 +65,14 @@ export const actions = {
   },
   loadPlaylistWithPayload(payload) {
     payload.items.forEach((item) => {
-      const isDuplicateOrDeleted = this.currentPlaylist.some((video) => {
+      const isInvalidVideo = this.currentPlaylist.some((video) => {
         if (video.videoId === item.contentDetails.videoId ||
-          item.snippet.title.includes('Deleted video')) {
+          item.snippet.title.includes('Deleted video') ||
+          item.snippet.title.includes('Private video')) {
           return true
         }
       })
-      if (!isDuplicateOrDeleted) {
+      if (!isInvalidVideo) {
         const video = {}
         video.videoId = item.contentDetails.videoId
         video.name = item.snippet.title
