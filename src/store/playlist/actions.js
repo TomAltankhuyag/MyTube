@@ -21,6 +21,8 @@ export const actions = {
   },
   shuffleCurrentPlaylist() {
     this.currentPlaylist = shuffleArray(this.currentPlaylist)
+    this.currentIndex = 0
+    this.changeVideoByIndex(this.currentIndex)
   },
   changeVideoByIndex(index = 0) {
     let video
@@ -63,12 +65,13 @@ export const actions = {
   },
   loadPlaylistWithPayload(payload) {
     payload.items.forEach((item) => {
-      const isDuplicateVideo = this.currentPlaylist.some((video) => {
-        if (video.videoId === item.contentDetails.videoId) {
+      const isDuplicateOrDeleted = this.currentPlaylist.some((video) => {
+        if (video.videoId === item.contentDetails.videoId ||
+          item.snippet.title.includes('Deleted video')) {
           return true
         }
       })
-      if (!isDuplicateVideo) {
+      if (!isDuplicateOrDeleted) {
         const video = {}
         video.videoId = item.contentDetails.videoId
         video.name = item.snippet.title

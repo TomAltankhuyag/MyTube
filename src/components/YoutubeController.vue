@@ -16,7 +16,9 @@
            :class="{activated: autopause}"
            @click="onSwitchClick").switch-style
   v-btn(v-if="devMode" @click="onSyncPlaylist").btn-style Sync Playlist
-  v-btn(@click="onPlayNext" :disabled="isCurrentPlaylistEmpty").btn-style Play Next
+  .play-buttons
+    v-btn(@click="onGoBack" :disabled="isCurrentPlaylistEmpty").btn-style Play Previous
+    v-btn(@click="onPlayNext" :disabled="isCurrentPlaylistEmpty").btn-style Play Next
 
 </template>
 
@@ -81,6 +83,9 @@ export default {
     },
     onPlayNext() {
       videoController[controllerOptions.PLAY_NEXT]()
+    },
+    onGoBack(){
+      videoController[controllerOptions.PLAY_PREVIOUS]()
     },
      processPlaylistInput(userInput) {
       const playlistId = playlistIdParser(userInput)
@@ -157,9 +162,9 @@ $input-height : 50px;
     color: white;
   }
 
-  // .activated {
-  //   color: red;
-  // }
+  .play-buttons {
+    @include flex-row();
+  }
 
 }
 </style>

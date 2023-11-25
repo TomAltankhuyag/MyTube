@@ -16,10 +16,6 @@ export function playVideoByInput(payload) {
   store.playlist.changeCurrentVideoByVideo(video)
 }
 
-export function loadPlaylist(payload) {
-  // TODO
-}
-
 export function queueSong(payload) {
   const videoId = payload.items[0].id
   const video = {
@@ -57,3 +53,17 @@ export function playNextVideo() {
   }
 }
 
+export function playPreviousVideo() {
+  if (!store.playlist.currentPlaylist.length) {
+    console.warn('empty playlist')
+    return
+  }
+  if (!store.playlist.currentPlaylist.length === 1) {
+    console.warn('only one video in playlist')
+    return
+  }
+  const currentIndex = store.playlist.getCurrentIndex
+  if (currentIndex !== 0) {
+    store.playlist.changeVideoByIndex(currentIndex - 1)
+  }
+}

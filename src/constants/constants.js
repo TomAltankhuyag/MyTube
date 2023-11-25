@@ -17,11 +17,13 @@ export const HTTPS = 'https://'
 const QUEUE = 'queue'
 const PLAY_NEXT = 'play_next'
 const PLAY_NOW = 'play_now'
+const PLAY_PREVIOUS = 'play_previous'
 const LOAD_PLAYLIST = 'load_playlist'
 
 export const controllerOptions = {
   QUEUE,
   PLAY_NEXT,
   PLAY_NOW,
-  LOAD_PLAYLIST
+  LOAD_PLAYLIST,
+  PLAY_PREVIOUS
 }
