@@ -2,7 +2,7 @@
 .youtube-configurator
   .input-container
     v-text-field(v-model="userInput"
-                 label='Enter a URL or video ID'
+                 label='Enter URL or video ID'
                  @keyup.enter="processAction(controllerOptions.PLAY_NOW)"
                  color="purple"
                  clearable

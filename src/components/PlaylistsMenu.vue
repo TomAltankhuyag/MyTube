@@ -1,48 +1,38 @@
 <template lang="pug">
 v-layout
   v-navigation-drawer(v-model="drawer"
-                      location="left"
+                      location="right"
                       disable-resize-watcher
                       width="380").drawer-style
-    v-btn(@click="onClearPlaylist").btn-style Clear Playlist
-    v-btn(@click="onShufflePlaylist").btn-style Shuffle Playlist
-    song-list
+    v-btn(@click="placeholder").btn-style placeholder
+    v-btn(@click="placeholder").btn-style placeholder
 </template>
 
 <script>
 import { VNavigationDrawer, VLayout, VCard, VBtn} from 'vuetify/components'
-import SongList from './SongList.vue'
 
 export default {
   components: {
     VNavigationDrawer,
     VLayout,
-    SongList,
     VCard,
     VBtn
   },
   data() {
     return {
-      drawer: this.isPlaylistOn
+      drawer: this.isPlaylistsMenuOn
     }
   },
   props: {
-    isPlaylistOn: {
+    isPlaylistsMenuOn: {
       type: Boolean,
       default: false
     }
   },
   methods: {
-    onClearPlaylist() {
-      this.$store.playlist.clearPlaylist()
-      sessionStorage.removeItem('currentPlaylist')
-    },
-    onShufflePlaylist() {
-      this.$store.playlist.shuffleCurrentPlaylist()
-    },
   },
   watch: {
-    isPlaylistOn() {
+    isPlaylistsMenuOn() {
       this.drawer = !this.drawer
     }
   }

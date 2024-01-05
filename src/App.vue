@@ -2,18 +2,23 @@
 #app.app
   .youtube-app-container
     youtube-controller.controller
-    v-switch(v-model="isPlaylistOn"
-             :label="isPlaylistOn ? 'Playlist On' : 'Playlist Off'"
-             :class="{activated: isPlaylistOn}").switch-style
+    v-switch(v-model="isCurrentPlaylistOn"
+             :label="isCurrentPlaylistOn ? 'Current Playlist Display: On' : 'Current Playlist Display: Off'"
+             :class="{activated: isCurrentPlaylistOn}").switch-style
+    v-switch(v-model="isPlaylistsMenuOn"
+             :label="isPlaylistsMenuOn ? 'Saved Playlist Display: On' : 'Saved Playlist Display: Off'"
+             :class="{activated: isPlaylistsMenuOn}").switch-style
     h3 Current Video: {{ currentVideo.name }}
     youtube-video(:videoId="videoId").video
-    side-bar-menu(:isPlaylistOn="isPlaylistOn").side-bar-menu
+    current-playlist-menu(:isCurrentPlaylistOn="isCurrentPlaylistOn")
+    playlists-menu(:isPlaylistsMenuOn="isPlaylistsMenuOn")
 </template>
 
 <script>
 import YoutubeVideo from './components/YoutubeVideo.vue'
 import YoutubeController from './components/YoutubeController.vue'
-import SideBarMenu from './components/SideBarMenu.vue'
+import CurrentPlaylistMenu from './components/CurrentPlaylistMenu.vue'
+import PlaylistsMenu from './components/PlaylistsMenu.vue'
 import { usePlaylistStore } from './store/playlist'
 import { VSwitch } from 'vuetify/components'
 import { mapState } from 'pinia'
@@ -23,12 +28,14 @@ export default {
     YoutubeVideo,
     YoutubeController,
     VSwitch,
-    SideBarMenu
+    CurrentPlaylistMenu,
+    PlaylistsMenu
   },
   data() {
     return {
       isDebuggerOn: false,
-      isPlaylistOn: false
+      isCurrentPlaylistOn: false,
+      isPlaylistsMenuOn: false
     }
   },
   computed: {

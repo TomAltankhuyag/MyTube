@@ -20,25 +20,26 @@ export const actions = {
     this.currentPlaylist = []
   },
   shuffleCurrentPlaylist() {
+    // Shuffle the playlist and move the current video to the top
+    const video = this.currentVideo
     this.currentPlaylist = shuffleArray(this.currentPlaylist)
-    this.currentIndex = 0
-    this.changeVideoByIndex(this.currentIndex)
+
+    const currentIndex = this.currentPlaylist.indexOf(video)
+    const temp = this.currentPlaylist[0]
+    this.currentPlaylist[0] = this.currentPlaylist[currentIndex]
+    this.currentPlaylist[currentIndex] = temp
+    this.changeVideoByIndex()
   },
   changeVideoByIndex(index = 0) {
-    let video
     if (this.currentPlaylist.length === 0) {
       console.warn('out of songs!')
       return
     }
-
     if (index < this.currentPlaylist.length) {
-      video = this.currentPlaylist[index]
-      this.currentIndex = index
+      this.currentVideo = this.currentPlaylist[index]
     } else {
-      video = this.currentPlaylist[0]
-      this.currentIndex = 0
+      this.currentVideo = this.currentPlaylist[0]
     }
-    this.currentVideo = video
   },
   changeCurrentVideoByVideo(video) {
     if (!video || Object.keys(video).length === 0) {
