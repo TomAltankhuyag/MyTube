@@ -4,8 +4,9 @@ v-layout
                       location="left"
                       disable-resize-watcher
                       width="380").drawer-style
-    v-btn(@click="onClearPlaylist").btn-style Clear Playlist
-    v-btn(@click="onShufflePlaylist").btn-style Shuffle Playlist
+    v-btn(@click="onClearPlaylist").btn-style Clear
+    v-btn(@click="onShufflePlaylist").btn-style Shuffle
+    v-btn(@click="onSavePlaylist").btn-style Save
     song-list
 </template>
 
@@ -40,10 +41,13 @@ export default {
     onShufflePlaylist() {
       this.$store.playlist.shuffleCurrentPlaylist()
     },
+    onSavePlaylist() {
+      console.log('pressed SAVE')
+    }
   },
   watch: {
     isCurrentPlaylistOn() {
-      this.drawer = !this.drawer
+      this.drawer = this.isCurrentPlaylistOn
     }
   }
 }

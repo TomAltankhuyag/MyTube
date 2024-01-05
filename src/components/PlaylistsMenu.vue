@@ -4,19 +4,19 @@ v-layout
                       location="right"
                       disable-resize-watcher
                       width="380").drawer-style
-    v-btn(@click="placeholder").btn-style placeholder
-    v-btn(@click="placeholder").btn-style placeholder
+    playlist-list
 </template>
 
 <script>
 import { VNavigationDrawer, VLayout, VCard, VBtn} from 'vuetify/components'
-
+import PlaylistList from './PlaylistList.vue'
 export default {
   components: {
     VNavigationDrawer,
     VLayout,
     VCard,
-    VBtn
+    VBtn,
+    PlaylistList
   },
   data() {
     return {

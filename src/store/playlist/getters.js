@@ -17,7 +17,7 @@ export default {
     }
   },
   getCurrentIndex: (state) => {
-    return state.currentIndex
+    return  state.currentPlaylist.indexOf(state.currentVideo)
   },
   getVideoByIndex: (state) => {
     return (index) => {

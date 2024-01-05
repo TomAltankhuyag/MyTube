@@ -5,8 +5,8 @@ const state = {
   // set 'devMode' to true inside settings/index.js to utilize 'playlists'
   playlists: [
     {
-      id: 1,
       name: 'first playlist',
+      description: 'A really cool playlist',
       playlist: [
         {
           videoId: '16y1AkoZkmQ',
@@ -23,14 +23,33 @@ const state = {
           videoId: 'lxF31-mHLz0',
           name: 'Questions'
         }]
+    },
+    {
+      name: 'second playlist',
+      description: 'Another really cool playlist',
+      playlist: [
+        {
+          videoId: '16y1AkoZkmQ',
+          name: 'Rasputing'
+        },
+        {
+          videoId: 'Qaar0K5ThcM',
+          name: `Let's'nt stay the same`
+        }, {
+          videoId: 'pnjRMmrGEjU',
+          name: 'Younger youuuuuuu'
+        },
+        {
+          videoId: 'lxF31-mHLz0',
+          name: 'Questions?'
+        }]
     }
   ],
   currentPlaylist: [],
   currentVideo: {
     videoId: '',
     name: ''
-  },
-  currentIndex: 0
+  }
 }
 
 export const usePlaylistStore = defineStore('playlist', {

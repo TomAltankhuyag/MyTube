@@ -20,14 +20,14 @@ export const actions = {
     this.currentPlaylist = []
   },
   shuffleCurrentPlaylist() {
-    // Shuffle the playlist and move the current video to the top
     const video = this.currentVideo
     this.currentPlaylist = shuffleArray(this.currentPlaylist)
-
     const currentIndex = this.currentPlaylist.indexOf(video)
+
     const temp = this.currentPlaylist[0]
     this.currentPlaylist[0] = this.currentPlaylist[currentIndex]
     this.currentPlaylist[currentIndex] = temp
+
     this.changeVideoByIndex()
   },
   changeVideoByIndex(index = 0) {
@@ -79,6 +79,9 @@ export const actions = {
         }
       }
     })
+  },
+  loadPlaylist(playlistIndex) {
+    this.currentPlaylist = [...this.playlists[playlistIndex].playlist]
   }
 }
 // Helpers - thx chatgpt <3
