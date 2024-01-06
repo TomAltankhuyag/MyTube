@@ -6,7 +6,6 @@ const state = {
   playlists: [
     {
       name: 'first playlist',
-      description: 'A really cool playlist',
       playlist: [
         {
           videoId: '16y1AkoZkmQ',
@@ -26,7 +25,6 @@ const state = {
     },
     {
       name: 'second playlist',
-      description: 'Another really cool playlist',
       playlist: [
         {
           videoId: '16y1AkoZkmQ',

@@ -3,12 +3,13 @@
   .songs(v-for="(playlist, playlistIndex) in playlists")
     .song
       v-divider(v-if="playlistIndex !== 0")
-      h1.name {{ playlist.name }}
-      .description {{ playlist.description }}
+      h3.name {{ playlist.name }}
     .controls
       v-chip(@click="onEdit(playlistIndex)" color="red") Edit
       v-btn(@click="onLoad(playlistIndex)") Load
   playlist-editor(:showModal="showEditModal"
+                  :editMode="true"
+                  :playlistId="selectedPlaylistId"
                   @on-close-modal="onCloseModal")
 </template>
 <script>
@@ -25,7 +26,8 @@ export default {
   },
   data() {
     return {
-      showEditModal: false
+      showEditModal: false,
+      selectedPlaylistId: null
     }
   },
   computed: {
@@ -33,9 +35,11 @@ export default {
   },
   methods: {
     onEdit(playlistIndex) {
+      this.selectedPlaylistId = playlistIndex
       this.showEditModal = true
     },
     onLoad(playlistIndex) {
+
       this.$store.playlist.loadPlaylist(playlistIndex)
     },
     onCloseModal(){

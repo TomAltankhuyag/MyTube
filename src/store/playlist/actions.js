@@ -82,9 +82,20 @@ export const actions = {
   },
   loadPlaylist(playlistIndex) {
     this.currentPlaylist = [...this.playlists[playlistIndex].playlist]
+  },
+  updatePlaylistInfo(playlistIndex, playlistName) {
+    this.playlists[playlistIndex].name = playlistName
+  },
+  addPlaylist(playlistName) {
+    const newPlaylist = {
+      name: playlistName,
+      playlist: [...this.currentPlaylist]
+    }
+    this.playlists = [...this.playlists, newPlaylist]
   }
 }
-// Helpers - thx chatgpt <3
+
+//////// Helpers
 // min - Inclusive
 // max - Exclusive
 function getRandomInt(min = 0, max) {
