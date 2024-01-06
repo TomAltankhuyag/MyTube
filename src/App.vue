@@ -46,6 +46,10 @@ export default {
     if (currentPlaylist) {
       this.$store.playlist.setCurrentPlaylist(currentPlaylist)
     }
+    const playlists = JSON.parse(localStorage.getItem('playlists'))
+    if (playlists) {
+      this.$store.playlist.setPlaylists(playlists)
+    }
   },
   methods: {
     onSubmit(input) {

@@ -1,6 +1,6 @@
 <template lang="pug">
-.youtube-player(tabindex="-1")
-	#player(tabindex="-1")
+.youtube-player(tabindex='-1')
+	#player(tabindex='-1')
 </template>
 
 <script>

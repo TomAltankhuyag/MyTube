@@ -5,7 +5,7 @@ const state = {
   // set 'devMode' to true inside settings/index.js to utilize 'playlists'
   playlists: [
     {
-      name: 'first playlist',
+      name: 'My confession',
       playlist: [
         {
           videoId: '16y1AkoZkmQ',
@@ -21,25 +21,6 @@ const state = {
         {
           videoId: 'lxF31-mHLz0',
           name: 'Questions'
-        }]
-    },
-    {
-      name: 'second playlist',
-      playlist: [
-        {
-          videoId: '16y1AkoZkmQ',
-          name: 'Rasputing'
-        },
-        {
-          videoId: 'Qaar0K5ThcM',
-          name: `Let's'nt stay the same`
-        }, {
-          videoId: 'pnjRMmrGEjU',
-          name: 'Younger youuuuuuu'
-        },
-        {
-          videoId: 'lxF31-mHLz0',
-          name: 'Questions?'
         }]
     }
   ],

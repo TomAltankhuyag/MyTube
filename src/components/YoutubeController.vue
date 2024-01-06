@@ -4,9 +4,9 @@
     v-text-field(v-model="userInput"
                  label='Enter URL or video ID'
                  @keyup.enter="processAction(controllerOptions.PLAY_NOW)"
-                 color="purple"
+                 color='purple'
                  clearable
-                 hide-details="auto").input-style
+                 hide-details='auto').input-style
     .controller-buttons
       v-btn.add-style(@click="processAction(controllerOptions.PLAY_NOW)").btn-style Play now
       v-btn.add-style(@click="onLoadPlaylist").btn-style Load Playlist
@@ -133,7 +133,7 @@ $input-height : 50px;
     .input-style {
       width: 200px;
       margin: 0 5px;
-      color: pink;
+      color: red;
       @media screen and (min-width: 650px) {
         width: 350px;
       }
@@ -158,8 +158,10 @@ $input-height : 50px;
   }
   .btn-style {
     margin-bottom: 10px;
-    background-color: pink;
-    color: white;
+    // background-color: pink;
+    // color: white;
+    background-color: white;
+    color: red;
   }
 
   .play-buttons {

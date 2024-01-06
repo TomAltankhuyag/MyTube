@@ -1,12 +1,12 @@
 <template lang="pug">
 v-layout
   v-navigation-drawer(v-model="drawer"
-                      location="left"
+                      location='left'
                       disable-resize-watcher
-                      width="380").drawer-style
+                      width='380').drawer-style
     v-btn(@click="onClearPlaylist").btn-style Clear
-    v-btn(@click="onShufflePlaylist").btn-style Shuffle
-    v-btn(@click="onSavePlaylist").btn-style Save
+    v-btn(@click="onShufflePlaylist" :disabled="isCurrentPlaylistEmpty").btn-style Shuffle
+    v-btn(@click="onSavePlaylist" :disabled="isCurrentPlaylistEmpty").btn-style Save
     song-list
   playlist-editor(:showModal="showAddModal"
                   @on-close-modal="onCloseModal")
@@ -38,6 +38,11 @@ export default {
       default: false
     }
   },
+  computed: {
+    isCurrentPlaylistEmpty() {
+      return this.$store.playlist.currentPlaylist.length === 0
+    }
+  },
   methods: {
     onClearPlaylist() {
       this.$store.playlist.clearPlaylist()
@@ -48,7 +53,6 @@ export default {
     },
     onSavePlaylist() {
       this.showAddModal = true
-      // console.log('pressed SAVE')
     },
     onCloseModal() {
       this.showAddModal = false
@@ -63,12 +67,13 @@ export default {
 </script>
 <style lang="scss" scoped>
 .drawer-style{
-  background-color: lightblue;
+  background: linear-gradient(0deg, rgba(255,155,249,1) 0%, rgba(0,237,255,1) 100%);
+
   .btn-style {
-      margin-bottom: 10px;
-      background-color: pink;
-      color: white;
-    }
+    margin-bottom: 10px;
+    background-color: white;
+    color: blue;
+  }
 
 }
 </style>

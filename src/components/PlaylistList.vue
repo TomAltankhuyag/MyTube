@@ -1,12 +1,12 @@
 <template lang="pug">
-.song-list
-  .songs(v-for="(playlist, playlistIndex) in playlists")
-    .song
+.playlist-list
+  .playlists(v-for="(playlist, playlistIndex) in playlists")
+    .name
       v-divider(v-if="playlistIndex !== 0")
-      h3.name {{ playlist.name }}
+      h3 {{ playlist.name }}
     .controls
-      v-chip(@click="onEdit(playlistIndex)" color="red") Edit
-      v-btn(@click="onLoad(playlistIndex)") Load
+      v-chip(@click="onEdit(playlistIndex)" color='red') Edit
+      v-btn(@click="onLoad(playlistIndex)").btn-style Load
   playlist-editor(:showModal="showEditModal"
                   :editMode="true"
                   :playlistId="selectedPlaylistId"
@@ -52,29 +52,20 @@ export default {
 <style lang="scss" scoped>
 @import 'src/styles/flex';
 
-.song-list {
-  .songs {
+.playlist-list {
+  .playlists {
     @include flex-row();
     font-size: 1rem;
-    .song {
+    .name {
       width: 250px;
       min-height: 50px;
-      .videoId {
-        &.current {
-          color: pink;
-        }
-      }
-
-      .name {
-        vertical-align: middle;
-        // padding-top: 10px;
-        &.current {
-          color: pink;
-        }
-      }
-
-      .controls {
-        @include flex-row();
+    }
+    .controls {
+      @include flex-row();
+      .btn-style {
+        margin-bottom: 10px;
+        background-color: white;
+        color: blue;
       }
     }
   }

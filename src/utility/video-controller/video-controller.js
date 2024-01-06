@@ -1,13 +1,6 @@
 import {store} from '../../main'
-// Use index
 
-
-// This does NOT WORK below
-// const store = app.config.globalProperties.$store.playlist.currentVideo
-
-// payload - items
 export function playVideoByInput(payload) {
-  console.log(payload)
   const video = {
     name: payload.items[0].snippet.title,
     videoId: payload.items[0].id
@@ -31,17 +24,12 @@ export function queueSong(payload) {
   store.playlist.addVideoToEnd(video)
 }
 
-export function removeSong(videoId) {
-  // TODO
-}
-
 export function playNextVideo() {
   if (!store.playlist.currentPlaylist.length) {
     console.warn('empty playlist')
     return
   }
-
-  const currentIndex = store.playlist.getCurrentIndex
+  const currentIndex = store.playlist.getCurrentIndex === -1 ? 0 : store.playlist.getCurrentIndex
   const currentVid = store.playlist.getCurrentVideo
   const newVid = store.playlist.getVideoByIndex(currentIndex)
 
@@ -49,7 +37,6 @@ export function playNextVideo() {
     store.playlist.changeVideoByIndex(currentIndex)
   } else {
     store.playlist.changeVideoByIndex(currentIndex + 1)
-
   }
 }
 

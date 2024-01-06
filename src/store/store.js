@@ -15,6 +15,10 @@ export default {
       if (currentPlaylist.length !== 0) {
         localStorage.setItem('currentPlaylist', JSON.stringify(currentPlaylist))
       }
+      const playlists = state.playlists
+      if (playlists.length !== 0) {
+        localStorage.setItem('playlists', JSON.stringify(playlists))
+      }
      })
     // Global store property
     app.config.globalProperties.$store = store

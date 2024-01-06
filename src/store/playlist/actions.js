@@ -16,12 +16,18 @@ export const actions = {
   setCurrentPlaylist(playlist) {
     this.currentPlaylist = playlist
   },
+  setPlaylists(playlists) {
+    this.playlists = playlists
+  },
   clearPlaylist() {
     this.currentPlaylist = []
   },
   shuffleCurrentPlaylist() {
     const video = this.currentVideo
     this.currentPlaylist = shuffleArray(this.currentPlaylist)
+    if (video.name.length === 0) {
+      return
+    }
     const currentIndex = this.currentPlaylist.indexOf(video)
 
     const temp = this.currentPlaylist[0]
@@ -54,6 +60,9 @@ export const actions = {
     if (index >= 0) {
       this.currentPlaylist.splice(index, 1)
     }
+  },
+  removePlaylistById(playlistId) {
+    this.playlists.splice(playlistId, 1)
   },
   addVideoToEnd(video) {
     const newVideo = {

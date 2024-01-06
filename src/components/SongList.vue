@@ -5,8 +5,8 @@
       v-divider(v-if="id !== 0")
       .name(:class="{current: currentVideo.videoId === song.videoId}") {{ song.name }}
     .controls
-      v-chip(@click="onDelete(song)" color="red").remove-button X
-      v-btn(@click="onPlay(song)").play-button Play
+      v-chip(@click="onDelete(song)" color='red') X
+      v-btn(@click="onPlay(song)").btn-style Play
 </template>
 <script>
 import { mapState } from 'pinia'
@@ -56,8 +56,13 @@ export default {
         }
       }
 
-      .controls {
-        @include flex-row();
+    }
+    .controls {
+      @include flex-row();
+      .btn-style {
+        margin-bottom: 10px;
+        background-color: white;
+        color: blue;
       }
     }
   }
