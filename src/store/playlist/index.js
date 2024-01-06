@@ -5,23 +5,37 @@ const state = {
   // set 'devMode' to true inside settings/index.js to utilize 'playlists'
   playlists: [
     {
-      name: 'My confession',
+      name: 'Welcome',
       playlist: [
         {
-          videoId: '16y1AkoZkmQ',
-          name: 'Rasputin'
+          videoId: 'KSbxm6wMcDI',
+          name: 'My Way'
         },
         {
-          videoId: 'Qaar0K5ThcM',
-          name: `Let's stay the same`
-        }, {
-          videoId: 'pnjRMmrGEjU',
-          name: 'Younger you'
+          videoId: 'G3qQtf7jahE',
+          name: 'Comedy'
         },
         {
-          videoId: 'lxF31-mHLz0',
-          name: 'Questions'
-        }]
+          videoId: 'yox2Yz4Ni2o',
+          name: 'If I Am With You'
+        },
+        {
+          videoId: 'nQJEp-k-ogs',
+          name: 'pov'
+        },
+        {
+          videoId: 'djc0YkawULk',
+          name: 'Let You Go'
+        },
+        {
+          videoId: 'AANdt8yJYck',
+          name: 'Worry'
+        },
+        {
+          videoId: 'WOcQiDaBodw',
+          name: 'Daisies'
+        }
+      ]
     }
   ],
   currentPlaylist: [],
