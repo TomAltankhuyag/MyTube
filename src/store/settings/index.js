@@ -6,8 +6,7 @@ const actions = {
 }
 
 const state = {
-  autopause: true,
-  devMode: false,
+  autopause: true
 }
 
 export const useSettingStore = defineStore('settings', {

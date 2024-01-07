@@ -22,11 +22,11 @@ export default {
     ...mapState(usePlaylistStore, ['currentPlaylist', 'currentVideo', 'currentPlaylist'])
   },
   methods: {
-    onDelete(song) {
-      this.$store.playlist.removeVideoByVideoId(song.videoId)
+    onDelete(video) {
+      this.$store.playlist.removeVideoByVideoId(video)
     },
-    onPlay(song) {
-      this.$store.playlist.changeCurrentVideoByVideo(song)
+    onPlay(video) {
+      this.$store.playlist.changeCurrentVideoByVideo(video)
     }
   }
 }

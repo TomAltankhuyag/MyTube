@@ -15,7 +15,6 @@
            :label="autopause ? 'Autopause On' : 'Autopause Off'"
            :class="{activated: autopause}"
            @click="onSwitchClick").switch-style
-  v-btn(v-if="devMode" @click="onSyncPlaylist").btn-style Sync Playlist
   .play-buttons
     v-btn(@click="onGoBack" :disabled="isCurrentPlaylistEmpty").btn-style Play Previous
     v-btn(@click="onPlayNext" :disabled="isCurrentPlaylistEmpty").btn-style Play Next
@@ -47,7 +46,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(useSettingStore, ['autopause', 'devMode']),
+    ...mapState(useSettingStore, ['autopause']),
     ...mapState(usePlaylistStore, ['currentPlaylist']),
     hasInput() {
       return this.userInput && this.userInput.replace(/\s/g, '').length
@@ -77,9 +76,6 @@ export default {
       if (payload.status === YOUTUBE_API_CODES.VALID) {
         this.$store.playlist.loadPlaylistWithPayload(payload)
       }
-    },
-    onSyncPlaylist() {
-      this.$store.playlist.syncPlaylist()
     },
     onPlayNext() {
       videoController[controllerOptions.PLAY_NEXT]()

@@ -2,7 +2,6 @@ import { defineStore } from "pinia"
 import getters from './getters'
 import { actions } from './actions'
 const state = {
-  // set 'devMode' to true inside settings/index.js to utilize 'playlists'
   playlists: [
     {
       name: 'Welcome',

@@ -1,18 +1,4 @@
 export const actions = {
-  // set 'devMode' to true inside settings/index.js to use syncPlaylist
-  syncPlaylist(index = 0) {
-    if (this.playlists.length === 0) {
-      console.warn('no playlists ):')
-      return
-    }
-    // Initialize both user and hidden playlist
-    this.currentPlaylist = [...this.playlists[index].playlist]
-
-    if (!this.currentVideo.videoId) {
-      const songIndex = getRandomInt(0, this.currentPlaylist.length)
-      this.changeVideoByIndex(songIndex)
-    }
-  },
   setCurrentPlaylist(playlist) {
     this.currentPlaylist = playlist
   },
@@ -29,14 +15,16 @@ export const actions = {
       return
     }
     const currentIndex = this.currentPlaylist.indexOf(video)
-
+    if (currentIndex === -1) {
+      return
+    }
     const temp = this.currentPlaylist[0]
     this.currentPlaylist[0] = this.currentPlaylist[currentIndex]
     this.currentPlaylist[currentIndex] = temp
 
-    this.changeVideoByIndex()
+    this.changeVideoByIndex(0)
   },
-  changeVideoByIndex(index = 0) {
+  changeVideoByIndex(index) {
     if (this.currentPlaylist.length === 0) {
       console.warn('out of songs!')
       return
@@ -53,8 +41,8 @@ export const actions = {
     }
     this.currentVideo = video
   },
-  removeVideoByVideoId(videoId) {
-    const video = this.currentPlaylist.find(video => video.videoId === videoId)
+  removeVideoByVideoId(video) {
+    // const video = this.currentPlaylist.find(video => video.videoId === videoId)
     const index = this.currentPlaylist.indexOf(video)
     // Index is returned as -1 if no matching video is found
     if (index >= 0) {
